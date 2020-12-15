@@ -82,7 +82,7 @@ export class Table extends Component{
 
 		return (
 			<div>
-			<h3> Auctions</h3>
+			<h3>Auctions</h3>
 			<table >
 				<tbody>
 					<tr>
