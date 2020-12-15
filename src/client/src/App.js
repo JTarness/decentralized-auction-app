@@ -35,8 +35,7 @@ class App extends Component {
 		let leng = await ratingContract.methods.getAuctionCount().call();
 		for(let i = 0; i < leng; i++) {
 			let list = await ratingContract.methods.viewPreviousAuction(i).call();
-			let tempList = {name: list[0], bid: list[1], hours: list[2], minutes: list[3], seconds: list[4]};
-			if(list[2] + list[3] + list[4] === 0) { continue; }
+			let tempList = {name: list[0], bid: list[1], hours: list[2], minutes: list[3], seconds: list[4], id: list[5], completed: list[6]};
 			this.setState({auction: this.state.auction.concat(tempList)});
 		}
 	}

@@ -17,6 +17,8 @@ contract AuctionHouse {
 
     Auction[] public auctions;
 
+    Auction[] public pastAuctions;
+
     mapping(address => uint) public bidders;
 
     mapping(address => bool) public auctionWinners;
@@ -53,6 +55,9 @@ contract AuctionHouse {
         auctions[auctionID].leadingBidder = winner;     //the current leading bidder will be the winner if the auction has expired
         auctionWinners[winner] = true;
         auctions[auctionID].completed = true;
+	pastAuctions.push(auctions[auctionID]);
+	delete auctions[auctionID];
+	auctionCount--;
     }
 
     function getLastSoldVal(uint auctionID) public view returns (uint) {
@@ -60,8 +65,8 @@ contract AuctionHouse {
         return auctions[auctionID].bid;   //the current state of highest bid is the last winning bid
     }
 
-    function viewPreviousAuction(uint auctionID) public view returns(string memory name, uint bid, uint hour, uint minute, uint second) {
-        return (auctions[auctionID].itemName, auctions[auctionID].bid, auctions[auctionID].h, auctions[auctionID].m, auctions[auctionID].s);
+    function viewPreviousAuction(uint auctionID) public view returns(string memory name, uint bid, uint hour, uint minute, uint second, uint id, bool completed) {
+        return (auctions[auctionID].itemName, auctions[auctionID].bid, auctions[auctionID].h, auctions[auctionID].m, auctions[auctionID].s, auctionID, auctions[auctionID].completed);
     }
 
     function getAuctionCount() public view returns(uint) {

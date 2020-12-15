@@ -2,6 +2,7 @@ import React, { Component }  from 'react';
 import Timer from 'react-compound-timer';
 import { ratingContract, account0 } from '../config';
 import Modal from 'react-modal';
+import './Table.css';
 
 
 
@@ -21,8 +22,8 @@ export class Table extends Component{
 	}
 
 
-	handleOpenModal() {
-		this.setState({showModal: true});
+	handleOpenModal(event,inp) {
+		this.setState({showModal: true, i: inp});
 	}
 
 	handleCloseModal() {
@@ -35,8 +36,8 @@ export class Table extends Component{
 	}
 
 
-	handleChangeBid(event, inp) {
-		this.setState({bidAmount: event.target.value, i: inp});
+	handleChangeBid(event) {
+		this.setState({bidAmount: event.target.value});
 	}
 
 	handleEndAuction(event, inp) {
@@ -44,9 +45,11 @@ export class Table extends Component{
 	}
 
 
+	//switch i and this.props.auction[i].id
+
 	render() {
 		let auctionList = this.props.auction.map((auction, i)=>
-			<tr key={i} onClick={this.handleOpenModal}>
+			<tr key={i} onClick={event => this.handleOpenModal(event,i)}>
 			<td>{this.props.auction[i].name}</td>
 			<td>{this.props.auction[i].bid}</td>
 			<td>
@@ -61,7 +64,7 @@ export class Table extends Component{
 					//},
 					{
 						time: 0,
-						callback: event => this.handleEndAuction(event,i),
+						callback: event => this.handleEndAuction(event,i), //switch like above
 					}
 				]}
 			>
@@ -74,19 +77,6 @@ export class Table extends Component{
 				)}
 			</Timer>
 			</td>
-
-			<Modal
-				isOpen={this.state.showModal}
-				ariaHideApp={false}
-			>
-				<form onSubmit={this.handleChange}>
-					<label>
-						Enter bid amount:
-						<input type="number" value={this.state.bidAmount} onChange={event => this.handleChangeBid(event,i)} />
-					</label>
-						<input type="submit" value="Submit" />
-				</form>
-			</Modal>
 			</tr>
 		)
 
@@ -103,6 +93,18 @@ export class Table extends Component{
 					{auctionList}
 				</tbody>
 			</table>
+			<Modal
+				isOpen={this.state.showModal}
+				ariaHideApp={false}
+			>
+				<form onSubmit={this.handleChange}>
+					<label>
+						Enter bid amount:
+						<input type="number" value={this.state.bidAmount} onChange={event => this.handleChangeBid(event)} />
+					</label>
+						<input type="submit" value="Submit" />
+				</form>
+			</Modal>
 			</div>
 		);
 	}
