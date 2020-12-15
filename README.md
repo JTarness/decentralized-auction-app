@@ -22,7 +22,10 @@ Users should be able to view the previous transactions/bids from their account b
 **Run**
 1. From within the NPM or Yarn directory start the server
 2. Open the browser and navigate to https://localhost:3000
-#### **Demo Video**
+
+### **Demo Video**
+The following link will allow new users to see the application in action and act as a tutorial for their first experience with FreeTrader
+
 
 ### **Future Work**
 As the team continues to update and improve the features of the FreeTrader app, the following areas will be released in a future version of the application
