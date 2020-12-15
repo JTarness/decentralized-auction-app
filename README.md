@@ -25,6 +25,6 @@ Users should be able to view the previous transactions/bids from their account b
 #### **Demo Video**
 
 ##### **Contributors**
-- J Tarness, Developer
-- Andrew Hogan, Developer
-- James Moy, Developer
+- J Tarness, Frontend Developer
+- Andrew Hogan, Smart Contract and Backend Developer 
+- James Moy, Integration Lead and Bug Fixes
