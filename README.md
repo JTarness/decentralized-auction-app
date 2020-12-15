@@ -12,7 +12,7 @@ Upon searching for an item or browsing the market homepage, the user will have t
 After a period of time passes or a specific amount of funds are received through bids, the item will be sold to the last highest bidder. The user will be sent a receipt for the transaction reflecting the ETH lost in the purchase as well as the information of the item purchased. 
 - Viewing Previous Transactions-
 Users should be able to view the previous transactions/bids from their account by tracking the transaction receipts while the app is launched 
-### **Getting Started**
+## **Getting Started**
 **Installation and Setup**
 1. Install Node.js and Ganache
 2. Clone this repository and all neccessary assets
@@ -23,11 +23,11 @@ Users should be able to view the previous transactions/bids from their account b
 1. From within the NPM or Yarn directory start the server
 2. Open the browser and navigate to https://localhost:3000
 
-### **Demo Video**
+## **Demo Video**
 The following link will allow new users to see the application in action and act as a tutorial for their first experience with FreeTrader
 
 
-### **Future Work**
+## **Future Work**
 As the team continues to update and improve the features of the FreeTrader app, the following areas will be released in a future version of the application
 
 -An option to add images to show items currently up for auction
@@ -35,7 +35,7 @@ As the team continues to update and improve the features of the FreeTrader app, 
 -A more refined system for notifications sent to auction winners including information about how they will receive their item (if applicable)
 
 
-##### **Contributors**
+## **Contributors**
 - J Tarness, Frontend Developer
 - Andrew Hogan, Smart Contract and Backend Developer 
 - James Moy, Integration Lead and Bug Fixes
