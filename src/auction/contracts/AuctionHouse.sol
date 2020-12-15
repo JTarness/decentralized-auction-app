@@ -56,7 +56,9 @@ contract AuctionHouse {
         auctionWinners[winner] = true;
         auctions[auctionID].completed = true;
 	pastAuctions.push(auctions[auctionID]);
-	delete auctions[auctionID];
+	auctions[auctionID] = auctions[auctions.length - 1];
+	delete auctions[auctions.length - 1];
+	auctions.length--;
 	auctionCount--;
     }
 

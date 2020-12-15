@@ -93,10 +93,10 @@ class App extends Component {
 
 	setWinner(i) {
 		ratingContract.methods.setAuctionWinner(i, account0).send({from: account0, gas: 670000});
-		ratingContract.methods.updateTime(i, 0, 0, 0).send({from: account0, gas: 670000});
-		let auction = [...this.state.auction];
-		auction.splice(i, 1);
-		this.setState({auction: auction});
+		//ratingContract.methods.updateTime(i, 0, 0, 0).send({from: account0, gas: 670000});
+		//let auction = [...this.state.auction];
+		//auction.splice(i, 1);
+		//this.setState({auction: auction});
 	}
 
 	render() {
