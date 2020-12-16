@@ -9,9 +9,9 @@ Users should be able to select a desired item and place it up for auction at a s
 - Placing a Bid on an Item-
 Upon searching for an item or browsing the market homepage, the user will have the ability to    place a bid on their desired item. By specifying gas price and the max ETH a user is willing to give up, an item’s current bid total will be adjusted. 
 - Finalizing an Auction-
-After a period of time passes or a specific amount of funds are received through bids, the item will be sold to the last highest bidder. The user will be sent a receipt for the transaction reflecting the ETH lost in the purchase as well as the information of the item purchased. 
+After a period of time passes or a specific amount of funds are received through bids, the item will be sold to the last highest bidder. The user will be sent a receipt for the transaction reflecting the ETH lost in the purchase as well as the information of the item purchased. This can be observed in the blocks mined by the user’s ganache server as he/she runs the app and places bids.
 - Viewing Previous Auctions-
-Users should be able to view the previous transactions/bids from their account by tracking the transaction receipts while the app is launched 
+Users should be able to view the previous auctions from their account by tracking the auctions that have expired since the app has launched.
 ## **Getting Started**
 **Installation and Setup**
 1. Install Node.js and Ganache
