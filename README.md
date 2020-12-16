@@ -31,7 +31,9 @@ The following link will allow new users to see the application in action and act
 As the team continues to update and improve the features of the FreeTrader app, the following areas will be released in a future version of the application
 
 -An option to add images to show items currently up for auction
+
 -Built in network server on the application for buyers and sellers to communicate (chat room)
+
 -A more refined system for notifications sent to auction winners including information about how they will receive their item (if applicable)
 
 
