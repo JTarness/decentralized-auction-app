@@ -71,6 +71,14 @@ contract AuctionHouse {
         return (auctions[auctionID].itemName, auctions[auctionID].bid, auctions[auctionID].h, auctions[auctionID].m, auctions[auctionID].s, auctionID, auctions[auctionID].completed);
     }
 
+    function viewPastAuctions(uint auctionID) public view returns(string memory name, uint bid) {
+    	return (pastAuctions[auctionID].itemName, pastAuctions[auctionID].bid);
+    }
+
+    function getPastLeng() public view returns(uint) {
+    	return pastAuctions.length;
+    }
+
     function getAuctionCount() public view returns(uint) {
     	return auctionCount;
     }

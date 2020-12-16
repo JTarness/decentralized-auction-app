@@ -2,14 +2,17 @@ import React,  { Component } from 'react';
 import Table from './components/Table.js';
 import { ratingContract, account0 } from "./config";
 import Modal from 'react-modal';
+import './components/Table.css';
 
 class App extends Component {
 	constructor(props){
 		super(props)
 		this.state = {
 			auction: [],
+			pastAuctions: [],
 			showModal: false,
 			showBidModal: false,
+			showPModal: false,
 			cTime: "Enter Time as hh:mm:ss",
 			cItem: '',
 			cBid: 0,
@@ -27,6 +30,8 @@ class App extends Component {
 		this.handleCloseModal = this.handleCloseModal.bind(this);
 		this.bid = this.bid.bind(this);
 		this.setWinner = this.setWinner.bind(this);
+		this.handlePShowModal = this.handlePShowModal.bind(this);
+		this.handlePCloseModal = this.handlePCloseModal.bind(this);
 	}
 
 
@@ -40,8 +45,18 @@ class App extends Component {
 		}
 	}
 
+	async setPastTable() {
+		let leng = await ratingContract.methods.getPastLeng().call();
+		for(let i = 0; i < leng; i++) {
+			let list = await ratingContract.methods.viewPastAuctions(i).call();
+			let tempList = {name: list[0], bid: list[1], winner: account0};
+			this.setState({pastAuctions: this.state.pastAuctions.concat(tempList)});
+		}
+	}
+
 	async componentDidMount() {
 		await this.setTable();
+		await this.setPastTable();
 	}
 
 	//getSnapshotBeforeUpdate(prevProps, prevState) {
@@ -50,6 +65,14 @@ class App extends Component {
 
 	handleOpenModal() {
 		this.setState({showModal: true});
+	}
+
+	handlePShowModal() {
+		this.setState({showPModal: true});
+	}
+
+	handlePCloseModal() {
+		this.setState({showPModal: false});
 	}
 
 	handleCloseModal() {
@@ -100,10 +123,19 @@ class App extends Component {
 	}
 
 	render() {
+			let past = this.state.pastAuctions.map((auction, i)=>
+				<tr key={i}>
+				<td>{this.state.pastAuctions[i].winner}</td>
+				<td>{this.state.pastAuctions[i].name}</td>
+				<td>{this.state.pastAuctions[i].bid}</td>
+				</tr>
+			)
+
 		return (
 			<div className="App">
 			<header>Freetrade</header>
 			<button onClick={this.handleOpenModal}>Create an Auction</button>
+			<button onClick={this.handlePShowModal}>View Past Auctions</button>
 			<Modal
 				isOpen={this.state.showModal}
 				ariaHideApp={false}
@@ -123,6 +155,21 @@ class App extends Component {
 					</label>
 					<input type="submit" value="Submit" />
 				</form>
+			</Modal>
+			<Modal
+				isOpen={this.state.showPModal}
+			>
+				<table >
+					<tbody>
+						<tr>
+							<th>Winner</th>
+							<th>Item</th>
+							<th>Final Bid</th>
+						</tr>
+						{past}
+					</tbody>
+				</table>
+				<button onClick={this.handlePCloseModal}>Close</button>
 			</Modal>
 			<div className="current-table">
 			<Table auction={this.state.auction} bid={this.bid} setWinner={this.setWinner} />

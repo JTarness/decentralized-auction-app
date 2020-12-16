@@ -13,7 +13,8 @@ export class Table extends Component{
 			auction: [this.props.auction],
 			showModal: false,
 			bidAmount: 0,
-			i: 0
+			i: 0,
+			times: []
 		};
 		this.handleOpenModal = this.handleOpenModal.bind(this);
 		this.handleCloseModal = this.handleCloseModal.bind(this);
@@ -75,6 +76,7 @@ export class Table extends Component{
 						<Timer.Seconds />
 					</React.Fragment>
 				)}
+
 			</Timer>
 			</td>
 			</tr>
