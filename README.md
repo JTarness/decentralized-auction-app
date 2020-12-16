@@ -24,7 +24,7 @@ Users should be able to view the previous transactions/bids from their account b
 2. Open the browser and navigate to https://localhost:3000
 
 ## **Demo Video**
-The following link will allow new users to see the application in action and act as a tutorial for their first experience with FreeTrader
+The following link will allow new users to see the application in action and act as a tutorial for their first experience with FreeTrade
 https://youtu.be/flLxxljHTOM
 
 ## **Future Work**
